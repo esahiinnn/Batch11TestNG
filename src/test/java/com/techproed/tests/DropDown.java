@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -28,8 +29,9 @@ import java.util.concurrent.TimeUnit;
 public class DropDown {
 
     WebDriver driver;
+
     @BeforeClass
-    public void setUp(){
+    public void setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -38,7 +40,7 @@ public class DropDown {
     }
 
     @Test
-    public void tests(){
+    public void tests() {
         //Select testDropDown = new Select(driver.findElement(By.xpath("//select[@id='dropdown']")));
         //testDropDown.selectByIndex(1);
         driver.get("https://the-internet.herokuapp.com/dropdown");
@@ -60,13 +62,29 @@ public class DropDown {
 
         //.Tüm dropdown değerleri(value) yazdırın
         List<WebElement> wholeDropDown = dropDownList.getOptions();
-            for (WebElement w:wholeDropDown) {
+        for (WebElement w : wholeDropDown) {
             System.out.println(w.getText());
         }
+        System.out.println("================");
+
+        //5. Dropdown’un boyutunu bulun, Dropdown’da 4 öğe varsa konsolda
+        // True , degilse False yazdırın.
+            switch (wholeDropDown.size()){
+                case 4:
+                    System.out.println("True");
+                    break;
+                default:
+                    System.out.println("False");
+                    break;
+            }
+
+
+
+
     }
 
     @AfterClass
-    public void tearDown(){
-        //driver.close();
+    public void tearDown() {
+        driver.close();
     }
 }
