@@ -11,7 +11,6 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.sql.Time;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -37,7 +36,66 @@ public class DropDown {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 
+        driver.get("https://the-internet.herokuapp.com/dropdown");
     }
+
+    @Test
+    public void dropDownTest(){
+        //1.Index kullanarak Seçenek 1’i (Option 1) seçin ve yazdırın
+
+        // a dropdown webelementini locate edelim
+        WebElement dropDown = driver.findElement(By.xpath("//select[@id='dropdown']"));
+
+
+        // b Select object'i olusturalim ve locate ettigimiz WebElement'i parametre olarak objeye ekleyelim
+        Select select = new Select(dropDown);
+
+        // c varolan 3 yontemden herhangi biri ile istedigimiz kategoriyi secelim
+        select.selectByIndex(1);
+        String firstSelectedOption = select.getFirstSelectedOption().getText();
+
+        //Sectigimiz option'in "Option 1" oldugunu test edin
+        Assert.assertEquals(firstSelectedOption, "Option 1");
+
+    }
+
+    @Test
+    public void as(){
+        //2.Value kullanarak Seçenek 2'yi (Option 2) seçin ve yazdırın
+
+        // a dropdown webelementini locate edelim
+        WebElement dropDown = driver.findElement(By.xpath("//select[@id='dropdown']"));
+
+        // b Select object'i olusturalim ve locate ettigimiz WebElement'i parametre olarak objeye ekleyelim
+        Select select = new Select(dropDown);
+
+        // c varolan 3 yontemden herhangi biri ile istedigimiz kategoriyi secelim
+        select.selectByValue("2");
+        String secondSelectedOption = select.getFirstSelectedOption().getText();
+
+        // sectigimiz option'un "Option 2" oldugunu test edelim
+        Assert.assertEquals(secondSelectedOption, "Option 2");
+    }
+
+    @Test
+    public void allList(){
+        WebElement dropDown = driver.findElement(By.xpath("//select[@id='dropdown']"));
+
+        Select select = new Select(dropDown);
+
+        List<WebElement> actualList = select.getOptions();
+            for(WebElement w: actualList){
+                System.out.println(w.getText());
+            }
+    }
+
+    @AfterClass
+    public void tearDown() {
+        driver.close();
+    }
+}
+
+/*
 
     @Test
     public void tests() {
@@ -68,20 +126,14 @@ public class DropDown {
         System.out.println("================");
 
         /*5. Dropdown’un boyutunu bulun, Dropdown’da 4 öğe varsa konsolda
-         True , degilse False yazdırın. */
+        // True , degilse False yazdırın.
             switch (wholeDropDown.size()){
-                case 4:
+                    case 4:
                     System.out.println("True");
                     break;
-                default:
-                    System.out.println("False");
-                    break;
-            }
+default:
+        System.out.println("False");
+        break;
+        }
 
-    }
-
-    @AfterClass
-    public void tearDown() {
-        driver.close();
-    }
-}
+        } */
