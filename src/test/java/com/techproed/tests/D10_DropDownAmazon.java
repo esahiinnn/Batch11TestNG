@@ -27,8 +27,9 @@ import java.util.concurrent.TimeUnit;
  */
 public class D10_DropDownAmazon {
     WebDriver driver;
+
     @BeforeClass
-    public void setUp(){
+    public void setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
@@ -38,17 +39,17 @@ public class D10_DropDownAmazon {
     }
 
     @Test
-    public void test1(){
+    public void test1() {
         //Arama kutusunun yanindaki kategori menusundeki kategori sayisinin  45 oldugunu test edin
         Select kategoriMenusu = new Select(driver.findElement(By.xpath("//select[@aria-describedby='searchDropdownDescription']")));
         List<WebElement> allOptions = kategoriMenusu.getOptions();
-        int kategoriSize = allOptions.size()-1;
+        int kategoriSize = allOptions.size() - 1;
         Assert.assertEquals(kategoriSize, 45);
 
     }
 
     @Test
-    public void test2(){
+    public void test2() {
         //1. Kategori menusunden Books secenegini  secin
         Select kategoriMenusu = new Select(driver.findElement(By.xpath("//select[@aria-describedby='searchDropdownDescription']")));
         kategoriMenusu.selectByVisibleText("Books");
@@ -69,8 +70,9 @@ public class D10_DropDownAmazon {
 
 
     }
+
     @AfterClass
-    public void tearDown(){
+    public void tearDown() {
         driver.close();
     }
 }
