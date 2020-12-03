@@ -60,15 +60,15 @@ public class DropDown {
         System.out.println(dropDownList.getFirstSelectedOption().getText());
         System.out.println("===============");
 
-        //.Tüm dropdown değerleri(value) yazdırın
+        //4.Tüm dropdown değerleri(value) yazdırın
         List<WebElement> wholeDropDown = dropDownList.getOptions();
         for (WebElement w : wholeDropDown) {
             System.out.println(w.getText());
         }
         System.out.println("================");
 
-        //5. Dropdown’un boyutunu bulun, Dropdown’da 4 öğe varsa konsolda
-        // True , degilse False yazdırın.
+        /*5. Dropdown’un boyutunu bulun, Dropdown’da 4 öğe varsa konsolda
+         True , degilse False yazdırın. */
             switch (wholeDropDown.size()){
                 case 4:
                     System.out.println("True");
@@ -77,9 +77,6 @@ public class DropDown {
                     System.out.println("False");
                     break;
             }
-
-
-
 
     }
 

@@ -58,6 +58,7 @@ public class D09_Priority {
         String yanlisTitle = "youtube";
         Assert.assertFalse(actualTitle.equals(yanlisTitle));
     }
+
     @AfterClass
     public void tearDown() {
         driver.close();
