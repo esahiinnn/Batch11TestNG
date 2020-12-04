@@ -11,6 +11,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -75,23 +77,21 @@ public class D11_SoftAssert2 {
 
         //9. soft assert kullanarak "Eurozone (Euro)" secildigini test edin
         String actualFirst = dropDown.getFirstSelectedOption().getText();
-        String expectedFirst = "Eurozone (euro)";
+        String expectedFirst = "Eurozone (Euro)";
         softAssert.assertEquals(actualFirst, expectedFirst, "Eurozone (Euro) secilmemistir");
 
         //10. soft assert kullanarak DropDown listesinin su secenekleri oldugunu test edin "Select One",....
         List<WebElement> allList = dropDown.getOptions();
-        String listToString = "";
-        for (WebElement w : allList) {
-            listToString += w.getText();
-        }
+        List<String> allListToString = new ArrayList<String>();
+            for (WebElement w : allList) {
+            allListToString.add(w.getText());
+            }
+        List<String> expecTedString = Arrays.asList("Select One", "Australia (dollar)", "Canada (dollar)","Switzerland (franc)","China (yuan)","Denmark (krone)","Eurozone (euro)","Great Britain (pound)","Hong Kong (dollar)","Japan (yen)","Mexico (peso)","Norway (krone)","New Zealand (dollar)","Sweden (krona)","Singapore (dollar)","Thailand (baht)");
 
-        String expectedList = "Select OneAustralia (dollar)Canada (dollar)" +
-                "Switzerland (franc)China (yuan)Denmark (krone)" +
-                "Eurozone (euro)Great Britain (pound)Hong Kong (dollar)" +
-                "Japan (yen)Mexico (peso)Norway (krone)" +
-                "New Zealand (dollar)Sweden (krona)Singapore (dollar)Thailand (baht)";
 
-        softAssert.assertEquals(listToString, expectedList, "Listler ayni degildir");
+
+
+        softAssert.assertEquals(allListToString, expecTedString, "Listler ayni degildir");
         softAssert.assertAll();
     }
 
