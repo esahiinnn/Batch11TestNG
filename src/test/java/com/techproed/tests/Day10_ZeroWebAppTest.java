@@ -8,6 +8,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
+import java.util.concurrent.TimeUnit;
+
 /*
     1. “http://zero.webappsecurity.com/” Adresine gidin
     2. Sign in butonuna basin
@@ -79,7 +81,7 @@ public class Day10_ZeroWebAppTest {
         //  12. “Calculate Costs” butonuna basin sonra “purchase” butonuna basin
         driver.findElement(By.xpath("//input[@id='pc_calculate_costs']")).click();
         driver.findElement(By.xpath("(//input[@type='submit'])[2]")).click();
-        ​
+
         // 13. “Foreign currency cash was successfully purchased.” yazisinin ciktigini control edin.
         WebElement textKontrol = driver.findElement(By.xpath("//div[@id='alert_content']"));
         String expectedResult = "Foreign currency cash was successfully purchased.";
