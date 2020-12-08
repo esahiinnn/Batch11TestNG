@@ -12,6 +12,7 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import java.util.concurrent.TimeUnit;
+
 /*
 Yeni bir Class Olusturun : D11_SoftAssert1
 1. “https://www.sahibinden.com/” Adresine gidin
@@ -28,7 +29,7 @@ public class D11_SoftAssert1 {
     WebDriver driver;
 
     @BeforeClass
-    public void setUp(){
+    public void setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -74,7 +75,7 @@ public class D11_SoftAssert1 {
     }
 
     @AfterClass
-    public void tearDown(){
+    public void tearDown() {
         driver.close();
     }
 }

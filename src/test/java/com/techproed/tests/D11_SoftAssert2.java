@@ -83,13 +83,10 @@ public class D11_SoftAssert2 {
         //10. soft assert kullanarak DropDown listesinin su secenekleri oldugunu test edin "Select One",....
         List<WebElement> allList = dropDown.getOptions();
         List<String> allListToString = new ArrayList<String>();
-            for (WebElement w : allList) {
+        for (WebElement w : allList) {
             allListToString.add(w.getText());
-            }
-        List<String> expecTedString = Arrays.asList("Select One", "Australia (dollar)", "Canada (dollar)","Switzerland (franc)","China (yuan)","Denmark (krone)","Eurozone (euro)","Great Britain (pound)","Hong Kong (dollar)","Japan (yen)","Mexico (peso)","Norway (krone)","New Zealand (dollar)","Sweden (krona)","Singapore (dollar)","Thailand (baht)");
-
-
-
+        }
+        List<String> expecTedString = Arrays.asList("Select One", "Australia (dollar)", "Canada (dollar)", "Switzerland (franc)", "China (yuan)", "Denmark (krone)", "Eurozone (euro)", "Great Britain (pound)", "Hong Kong (dollar)", "Japan (yen)", "Mexico (peso)", "Norway (krone)", "New Zealand (dollar)", "Sweden (krona)", "Singapore (dollar)", "Thailand (baht)");
 
         softAssert.assertEquals(allListToString, expecTedString, "Listler ayni degildir");
         softAssert.assertAll();
