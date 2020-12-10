@@ -42,6 +42,7 @@ public class D12_IFrameTest {
         //  ve  konsolda yazdirin.
         // 46.satirda iframe'in icine girmistik, simdi iframe'in disinda bir islem yapmak istiyorsak
         // once iframe'den cikmamiz gerekiyor.
+
         driver.switchTo().defaultContent();
         WebElement elemantalYazisiElementi = driver.findElement(By.linkText("Elemental Selenium"));
         softAssert.assertTrue(elemantalYazisiElementi.isDisplayed());

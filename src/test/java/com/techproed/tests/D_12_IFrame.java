@@ -1,11 +1,9 @@
 package com.techproed.tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -29,9 +27,14 @@ public class D_12_IFrame {
     @Test
     public void test() throws InterruptedException {
         driver.get("https://html.com/tags/iframe/");
-        JavascriptExecutor Scrool = (JavascriptExecutor) driver;
-        Scrool.executeScript("window.scrollBy(0,500)");
-        Thread.sleep(6000);
+        //JavascriptExecutor Scrool = (JavascriptExecutor) driver;
+        //Scrool.executeScript("window.scrollBy(0,500)");
+        Actions actions = new Actions(driver);
+        actions.
+                sendKeys(Keys.PAGE_DOWN).
+                sendKeys(Keys.PAGE_DOWN).
+                sendKeys(Keys.PAGE_DOWN).
+                perform();
 
         //1.adim iFrame'e nasil gecis yapacagimiza(switch) karar veririz
         // index, id, WebElement olarak locate ederiz
